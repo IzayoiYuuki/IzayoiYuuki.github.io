@@ -6,29 +6,63 @@
         <meta charset="UTF-8">
         <title>Yuqi Liu Homepage</title>
         <style type="text/css">
-          li.enum {font-size:18px;}
-          a.paper {text-decoration:none;color:black;}
-          p.mainparagraph {margin-left:30px;font-size:18px;}
-          h2.subtitle {font-size:26px;}
-          h3.subsubtitle {font-size:24px;font-weight:normal;}
-          div.block{
-            background-color: transparent;
-            border-style: solid;
-            border-color: rgb(157, 159, 171);
-            border-width: 2px;
-            border-radius: 15px;
-            padding: 25px;
+          @media (min-width: 0px) and (max-width:768px){
+            li.enum {font-size:14px;}
+            a.paper {text-decoration:none;color:black;}
+            p.mainparagraph {margin-left:5px;font-size:14px;}
+            h2.subtitle {font-size:22px;}
+            h3.subsubtitle {font-size:20px;font-weight:normal;}
+            div.block{
+                background-color: transparent;
+                border-style: solid;
+                border-color: rgb(157, 159, 171);
+                border-width: 2px;
+                border-radius: 15px;
+                padding: 25px;
+            }
+            .middle{
+                position:absolute;
+                left:20px;
+                right:20px;
+            }
+            body{
+                    background-image:url('/Figures/birds.JPG');
+                    background-repeat:no-repeat;
+                    background-attachment:fixed;
+                    background-size: cover;
+            }
+            div.six {width:100%;float:left;}
+            div.myphoto {text-align:center;width:200px;float:left;}
+            div.twopictures {width:100%;}
           }
-          .middle{
-            position:absolute;
-            left:20%;
-            right:20%;
-          }
-          body{
-                background-image:url('/Figures/birds.JPG');
-                background-repeat:no-repeat;
-                background-attachment:fixed;
-                background-size: cover;
+          @media (min-width: 768px){
+            li.enum {font-size:18px;}
+            a.paper {text-decoration:none;color:black;}
+            p.mainparagraph {margin-left:20px;font-size:18px;}
+            h2.subtitle {font-size:26px;}
+            h3.subsubtitle {font-size:24px;font-weight:normal;}
+            div.block{
+                background-color: transparent;
+                border-style: solid;
+                border-color: rgb(157, 159, 171);
+                border-width: 2px;
+                border-radius: 15px;
+                padding: 25px;
+            }
+            .middle{
+                position:absolute;
+                left:20%;
+                right:20%;
+            }
+            body{
+                    background-image:url('/Figures/birds.JPG');
+                    background-repeat:no-repeat;
+                    background-attachment:fixed;
+                    background-size: cover;
+            }
+            div.six {width:60%;float:left;}
+            div.myphoto {text-align:center;width:40%;float:left;}
+            div.twopictures {width:48%;display:inline-block;}
           }
         </style>
     </head>
@@ -41,7 +75,7 @@
                 <hr>
             </div>
             <div id="intro">
-                <div id="experimence" style="width:60%;float:left;">
+                <div id="experimence" class="six">
                     <p class="mainparagraph">
                         I am a third year Ph.D. student in the School of Mathematical Sciences, Fudan University.
                         My advisors are Prof. Weiguo Gao and Prof. Meiyue Shao.
@@ -51,8 +85,8 @@
                         and hosted by Prof. Jose E. Roman.
                     </p>
                 </div>
-                <div id="photo" style="text-align:center;width:40%;float:left;">
-                    <img src="/Figures/Photo.jpg" width="80%"/>
+                <div id="photo" class="myphoto">
+                    <img src="/Figures/Photo.jpg" width="90%"/>
                 </div>
             </div>
             <div id="research" style="clear:both;">
@@ -90,8 +124,12 @@
                 <h2 class="subtitle">Hobby</h2>
                 <div class="block">
                     <h3 class="subsubtitle">Photography</h2>
-                    <img src="/Figures/IMG_8141.JPG" width="100%"/>
-                    <img src="/Figures/IMG_8154.JPG" width="100%"/>
+                    <div class="twopictures">
+                        <img src="/Figures/IMG_8141.JPG" width="100%"/>
+                    </div>
+                    <div class="twopictures">
+                        <img src="/Figures/IMG_8154.JPG" width="100%"/>
+                    </div>
                     <p class="mainparagraph">
                         I have a Canon M6 camera (an really old one), a 24-70mm f/2.8 lens and a 70-200mm f/2.8 lens.
                         My hobby is bird photography.
