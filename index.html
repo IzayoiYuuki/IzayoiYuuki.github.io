@@ -27,7 +27,7 @@
                 right:20px;
             }
             body{
-                    background-image:url('/Figures/birds.JPG');
+                    background-image:url('Figures/birds.JPG');
                     background-repeat:no-repeat;
                     background-attachment:fixed;
                     background-size: cover;
@@ -57,7 +57,7 @@
                 right:20%;
             }
             body{
-                    background-image:url('/Figures/birds.JPG');
+                    background-image:url('Figures/birds.JPG');
                     background-repeat:no-repeat;
                     background-attachment:fixed;
                     background-size: cover;
@@ -66,14 +66,29 @@
             div.myphoto {text-align:center;width:40%;float:left;}
             div.twopictures {width:48%;display:inline-block;}
           }
+
+          /* Bird photography and its map link share the map's blue palette. */
+          .birding-nav {display:inline-block; width:30px; height:30px; overflow:hidden;}
+          .birding-nav img {display:block; width:30px; height:30px; object-fit:contain; transform:scale(1.6);}
+          #bird-photography {border-color:#a9c3d9; background:rgba(238,246,251,.92); color:#233f59;}
+          .bird-photo-gallery {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;}
+          .bird-photo-gallery figure {margin:0;}
+          .bird-photo-gallery img {display:block; width:100%; height:auto; border-radius:7px;}
+          .bird-photo-gallery figcaption {margin-top:8px; font:12px/1.5 Arial,sans-serif; color:#536d85;}
+          #bird-photography .mainparagraph {margin-left:0; line-height:1.6;}
+          .birding-entry {display:inline-block; padding:12px 16px; border:1px solid #28649a; border-radius:7px; background:#28649a; text-decoration:none; color:#fff; font:14px/1.4 Arial,sans-serif;}
+          .birding-entry:hover {background:#194d79; border-color:#194d79;}
+          .birding-entry:focus-visible,.birding-nav:focus-visible {outline:3px solid #317aae; outline-offset:4px;}
+          @media(max-width:768px){.bird-photo-gallery{grid-template-columns:1fr;gap:20px}}
         </style>
     </head>
     <body>
         <div id="all" class = "middle">
             <div id="maintitle">
                 <h1 style="font-size:36px;">Yuqi Liu</h1>
-                <a href="https://github.com/IzayoiYuuki"><img src="/Figures/githublogo.png" width="30px"/></a>
-                <a href="https://www.instagram.com/yqliu22?igsh=MWkyc2loenltcjdiZg%3D%3D&utm_source=qr"><img src="/Figures/Instagramlogo.png" width="30px"/></a>
+                <a href="https://github.com/IzayoiYuuki"><img src="Figures/githublogo.png" width="30px"/></a>
+                <a href="https://www.instagram.com/yqliu22?igsh=MWkyc2loenltcjdiZg%3D%3D&utm_source=qr"><img src="Figures/Instagramlogo.png" width="30px"/></a>
+                <a class="birding-nav" href="birding/index.html" title="My birding map"><img src="Figures/birdicon.png" alt="Birding map" width="30" height="30"/></a>
                 <hr>
             </div>
             <div id="intro">
@@ -87,7 +102,7 @@
                     </p>
                 </div>
                 <div id="photo" class="myphoto">
-                    <img src="/Figures/Photo.jpg" width="90%"/>
+                    <img src="Figures/Photo.jpg" width="90%"/>
                 </div>
             </div>
             <div id="publications" style="clear:both;">
@@ -165,28 +180,30 @@
             </div>
             <div id="hobby" style="clear:both;">
                 <h2 class="subtitle">Hobby</h2>
-                <div class="block">
-                    <h3 class="subsubtitle">Photography</h2>
-                    <div class="twopictures">
-                        <img src="/Figures/TourEffel.jpg" width="100%"/>
-                    </div>
-                    <div class="twopictures">
-                        <img src="/Figures/Dalian.jpg" width="100%"/>
-                    </div>
-                    <div class="twopictures">
-                        <img src="/Figures/Chaikasaltlake.jpg" width="100%"/>
+                <div id="bird-photography" class="block">
+                    <h3 class="subsubtitle">Bird photography</h3>
+                    <div class="bird-photo-gallery">
+                        <figure>
+                            <img src="birding/photos/rodley-nature-reserve/2026-08-01/thumbs/black-headed-gull.webp" srcset="birding/photos/rodley-nature-reserve/2026-08-01/thumbs/black-headed-gull.webp 720w, birding/photos/rodley-nature-reserve/2026-08-01/black-headed-gull.webp 1920w" sizes="(max-width:768px) 80vw, 30vw" alt="Black-headed gulls landing on a perch over the water at Rodley Nature Reserve" loading="lazy" width="720" height="480"/>
+                            <figcaption>Black-headed Gull · Rodley Nature Reserve</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="birding/photos/university-of-leeds/2026-08-09/thumbs/mallard.webp" srcset="birding/photos/university-of-leeds/2026-08-09/thumbs/mallard.webp 720w, birding/photos/university-of-leeds/2026-08-09/mallard.webp 1920w" sizes="(max-width:768px) 80vw, 30vw" alt="A mallard preening on the water at the University of Leeds" loading="lazy" width="720" height="480"/>
+                            <figcaption>Mallard · University of Leeds</figcaption>
+                        </figure>
                     </div>
                     <p class="mainparagraph">
-                        Beach, sunshine, and 70-200mm lens!
+                        Photographs of quiet encounters with birds, from campus ponds to nature reserves.
                     </p>
+                    <a class="birding-entry" href="birding/index.html">Explore my birding map →</a>
                 </div>
                 <div class="block">
-                    <h3 class="subsubtitle">Football</h2>
+                    <h3 class="subsubtitle">Football</h3>
                     <div class="twopictures">
-                        <img src="/Figures/Teammath.jpg" width="100%"/>
+                        <img src="Figures/Teammath.jpg" width="100%"/>
                     </div>
                     <div class="twopictures">
-                        <img src="/Figures/Gausscup.jpg" width="100%"/>
+                        <img src="Figures/Gausscup.jpg" width="100%"/>
                     </div>
                     <p class="mainparagraph">
                         I am a football fan of FC Barcelona for over 10 years, since 2011.

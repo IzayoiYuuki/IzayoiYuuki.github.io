@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "demo-loch-leven",
+  "name": "Loch Leven",
+  "mapLabel": "Loch Leven",
+  "region": "Scotland",
+  "country": "GB",
+  "coordinates": {
+    "lat": 56.2,
+    "lng": -3.38
+  },
+  "locationPrecision": "approximate",
+  "habitats": [
+    "Loch"
+  ],
+  "summary": "A sample Scottish location. The pin and photograph demonstrate the map; they are not a personal sighting record.",
+  "demo": true,
+  "visits": [
+    {
+      "id": "sample-visit",
+      "date": null,
+      "notes": "DEMONSTRATION ONLY. No real visit date has been supplied. The same photograph from Figures/birds.JPG is reused at each example location to demonstrate the interface; it is not evidence of a sighting at this place.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "unidentified",
+          "nameEn": "Unidentified birds",
+          "nameZh": "鸟种待确认",
+          "scientificName": "",
+          "identified": false,
+          "count": null,
+          "notes": "No species identification is being asserted. Replace this with an actual observation when adding your records.",
+          "photos": [
+            {
+              "src": "photos/demo/homepage-birds.webp",
+              "thumb": "photos/demo/thumbs/homepage-birds.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "Three birds in flight against a blue sky; a sample photograph from the existing homepage.",
+              "caption": "From the existing homepage. The original location, date and species have not been verified.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

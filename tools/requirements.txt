@@ -1,0 +1,2 @@
+# Needed only to import/resize/audit photos. No package is needed to view the website.
+Pillow>=10.4,<13

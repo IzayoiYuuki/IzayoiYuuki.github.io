@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "university-of-leeds",
+  "name": "University of Leeds",
+  "mapLabel": "University of Leeds",
+  "region": "West Yorkshire",
+  "country": "GB",
+  "coordinates": {
+    "lat": 53.807,
+    "lng": -1.552
+  },
+  "locationPrecision": "approximate",
+  "habitats": [
+    "Campus"
+  ],
+  "summary": "Mallard photographed on the University of Leeds campus.",
+  "demo": false,
+  "visits": [
+    {
+      "id": "visit-2026-08-09",
+      "date": "2026-08-09",
+      "notes": "Photographed a mallard at the University of Leeds on 9 August 2026.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "anas-platyrhynchos",
+          "nameEn": "Mallard",
+          "nameZh": "绿头鸭",
+          "scientificName": "Anas platyrhynchos",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/university-of-leeds/2026-08-09/mallard.webp",
+              "thumb": "photos/university-of-leeds/2026-08-09/thumbs/mallard.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "A mallard preening while floating on water at the University of Leeds.",
+              "caption": "Mallard at the University of Leeds · 9 August 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "rodley-nature-reserve",
+  "name": "Rodley Nature Reserve",
+  "mapLabel": "Rodley",
+  "region": "West Yorkshire",
+  "country": "GB",
+  "coordinates": {
+    "lat": 53.822,
+    "lng": -1.651
+  },
+  "locationPrecision": "approximate",
+  "habitats": [
+    "Wetland"
+  ],
+  "summary": "Black-headed gulls, mute swans and a grey wagtail photographed at Rodley Nature Reserve.",
+  "demo": false,
+  "visits": [
+    {
+      "id": "visit-2026-08-01",
+      "date": "2026-08-01",
+      "notes": "Photographed black-headed gulls, mute swans and a grey wagtail at Rodley Nature Reserve on 1 August 2026.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "chroicocephalus-ridibundus",
+          "nameEn": "Black-headed Gull",
+          "nameZh": "红嘴鸥",
+          "scientificName": "Chroicocephalus ridibundus",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/rodley-nature-reserve/2026-08-01/black-headed-gull.webp",
+              "thumb": "photos/rodley-nature-reserve/2026-08-01/thumbs/black-headed-gull.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "Black-headed gulls perched on and flying above a wooden rail over a pond at Rodley Nature Reserve.",
+              "caption": "Black-headed gulls at Rodley Nature Reserve · 1 August 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        },
+        {
+          "speciesId": "cygnus-olor",
+          "nameEn": "Mute Swan",
+          "nameZh": "疣鼻天鹅",
+          "scientificName": "Cygnus olor",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/rodley-nature-reserve/2026-08-01/mute-swan.webp",
+              "thumb": "photos/rodley-nature-reserve/2026-08-01/thumbs/mute-swan.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "An adult mute swan and cygnets swimming beside a flower-covered island at Rodley Nature Reserve.",
+              "caption": "Mute swan and cygnets at Rodley Nature Reserve · 1 August 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        },
+        {
+          "speciesId": "motacilla-cinerea",
+          "nameEn": "Grey Wagtail",
+          "nameZh": "灰鹡鸰",
+          "scientificName": "Motacilla cinerea",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/rodley-nature-reserve/2026-08-01/grey-wagtail.webp",
+              "thumb": "photos/rodley-nature-reserve/2026-08-01/thumbs/grey-wagtail.webp",
+              "width": 1206,
+              "height": 865,
+              "alt": "A grey wagtail among plants at the water’s edge at Rodley Nature Reserve.",
+              "caption": "Grey wagtail at Rodley Nature Reserve · 1 August 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yuqi Liu’s personal birding journal: explore UK locations, bird photographs and field notes.">
+  <meta name="theme-color" content="#28649a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>My birding map · Yuqi Liu</title>
+  <link rel="stylesheet" href="birding.css">
+  <script defer src="config.js"></script>
+  <script defer src="data/birding-data.js"></script>
+  <script defer src="assets/uk-context.js"></script>
+  <script defer src="assets/uk-cities.js"></script>
+  <script defer src="map.js"></script>
+  <script defer src="birding.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#map-stage">Skip to the map</a>
+  <header class="site-header wrap">
+    <a class="brand" href="../index.html"><strong>Yuqi Liu</strong><span> / Bird photography</span></a>
+    <nav aria-label="Main navigation"><a href="../index.html">Homepage <span aria-hidden="true">↗</span></a><a href="index.html" aria-current="page">Birding map</a></nav>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">A personal field journal</p>
+        <h1 id="page-title">My <em>birding map</em></h1>
+        <p class="lede"><span class="lede-title" lang="zh-Hans">观鸟奇境</span><span class="lede-translation">A world of wonder, one bird at a time.</span></p>
+      </div>
+      <div class="stats" id="stats" aria-label="Journal statistics">
+        <div><strong>—</strong><span>Locations</span></div><div><strong>—</strong><span>Species</span></div><div><strong>—</strong><span>Photographs</span></div>
+      </div>
+    </section>
+    <aside class="demo-notice" id="demo-notice" hidden>
+      <span class="notice-tag">PREVIEW EDITION</span>
+      <p>Example locations, not personal birding records. The sample photo is from my existing homepage; its location and species are unverified.</p>
+    </aside>
+    <section class="explorer" aria-label="Explore birding locations">
+      <div class="workspace">
+        <section class="map-card" aria-labelledby="map-heading">
+          <div class="map-topbar">
+            <div><span class="status-dot" aria-hidden="true"></span><h2 id="map-heading">United Kingdom</h2></div>
+            <div class="map-actions"><button id="reset-view" class="small-button" type="button" title="Show the whole United Kingdom">UK view</button><button id="street-toggle" class="small-button" type="button" aria-pressed="false">Street map <span aria-hidden="true">↗</span></button></div>
+          </div>
+          <div class="map-stage" id="map-stage" tabindex="-1">
+            <div id="outline-map" class="map-surface"></div>
+            <div id="street-map" class="map-surface" hidden></div>
+            <div class="map-zoom" id="outline-controls" aria-label="Map zoom controls"><button type="button" id="zoom-in" aria-label="Zoom in">+</button><button type="button" id="zoom-out" aria-label="Zoom out">−</button></div>
+            <div class="map-key" id="map-key"><span class="key-marker" aria-hidden="true"></span><span>Choose a location</span></div>
+            <div class="north" aria-hidden="true">N<span>↑</span></div>
+            <div class="map-credit" id="outline-credit">Overview: <a href="credits.html">GSHHG · Natural Earth</a></div>
+          </div>
+          <div class="map-bottom"><span id="map-status" role="status">Loading the local overview…</span><a href="catalogue.html">Photo catalogue <span aria-hidden="true">↗</span></a></div>
+        </section>
+        <aside class="detail-card" id="detail" aria-label="Selected location">
+          <div class="empty-detail"><p class="eyebrow">Your next stop</p><h2>A place for every photograph.</h2><p>Choose a map marker to explore the photographs and field notes.</p></div>
+        </aside>
+      </div>
+      <p id="app-status" class="app-status" role="status" aria-live="polite"></p>
+    </section>
+    <noscript><div class="notice"><p>JavaScript is disabled. All locations, photographs and notes are available in the <a href="catalogue.html">static catalogue</a>.</p></div></noscript>
+  </main>
+  <footer class="site-footer wrap"><span>© <span id="copyright-year">2026</span> Yuqi Liu · Photographs remain with their owner. · powered by GPT-6</span><a href="credits.html">About this map &amp; credits</a></footer>
+  <dialog id="lightbox" class="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-top"><div><span class="eyebrow">The photo notebook</span><h2 id="lightbox-title">Photograph</h2></div><button class="lightbox-close" id="lightbox-close" aria-label="Close photograph" type="button">×</button></div>
+    <div class="lightbox-image-wrap"><button class="lightbox-arrow" id="photo-prev" type="button" aria-label="Previous photograph">‹</button><img id="lightbox-image" alt=""><button class="lightbox-arrow" id="photo-next" type="button" aria-label="Next photograph">›</button></div>
+    <div class="lightbox-caption"><p id="lightbox-caption"></p><span id="photo-counter"></span></div>
+  </dialog>
+</body>
+</html>
