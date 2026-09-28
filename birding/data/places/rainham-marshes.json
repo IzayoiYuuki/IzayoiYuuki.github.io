@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "rainham-marshes",
+  "name": "RSPB Rainham Marshes",
+  "mapLabel": "Rainham Marshes",
+  "region": "Essex",
+  "country": "GB",
+  "coordinates": {
+    "lat": 51.4871,
+    "lng": 0.2277
+  },
+  "locationPrecision": "approximate",
+  "habitats": [
+    "Wetland"
+  ],
+  "summary": "Black-tailed godwits and northern lapwings photographed at RSPB Rainham Marshes.",
+  "demo": false,
+  "visits": [
+    {
+      "id": "visit-2026-09-02",
+      "date": "2026-09-02",
+      "notes": "Photographed black-tailed godwits and northern lapwings at RSPB Rainham Marshes on 2 September 2026.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "limosa-limosa",
+          "nameEn": "Black-tailed Godwit",
+          "nameZh": "黑尾塍鹬",
+          "scientificName": "Limosa limosa",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/rainham-marshes/2026-09-02/black-tailed-godwit.webp",
+              "thumb": "photos/rainham-marshes/2026-09-02/thumbs/black-tailed-godwit.webp",
+              "width": 1920,
+              "height": 1279,
+              "alt": "Two black-tailed godwits wading in shallow water on a mudflat at RSPB Rainham Marshes.",
+              "caption": "Black-tailed godwits at RSPB Rainham Marshes · 2 September 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        },
+        {
+          "speciesId": "vanellus-vanellus",
+          "nameEn": "Northern Lapwing",
+          "nameZh": "凤头麦鸡",
+          "scientificName": "Vanellus vanellus",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/rainham-marshes/2026-09-02/northern-lapwing.webp",
+              "thumb": "photos/rainham-marshes/2026-09-02/thumbs/northern-lapwing.webp",
+              "width": 1920,
+              "height": 1212,
+              "alt": "Two northern lapwings standing on a muddy bank beside the water at RSPB Rainham Marshes.",
+              "caption": "Northern lapwings at RSPB Rainham Marshes · 2 September 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

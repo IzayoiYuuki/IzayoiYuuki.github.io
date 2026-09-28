@@ -49,6 +49,46 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          0.2277,
+          51.4871
+        ]
+      },
+      "properties": {
+        "id": "rainham-marshes",
+        "name": "RSPB Rainham Marshes",
+        "mapLabel": "Rainham Marshes",
+        "region": "Essex",
+        "country": "GB",
+        "summary": "Black-tailed godwits and northern lapwings photographed at RSPB Rainham Marshes.",
+        "locationPrecision": "approximate",
+        "habitats": [
+          "Wetland"
+        ],
+        "demo": false,
+        "cover": "photos/rainham-marshes/2026-09-02/thumbs/black-tailed-godwit.webp",
+        "speciesIds": [
+          "limosa-limosa",
+          "vanellus-vanellus"
+        ],
+        "speciesCount": 2,
+        "photoPaths": [
+          "photos/rainham-marshes/2026-09-02/black-tailed-godwit.webp",
+          "photos/rainham-marshes/2026-09-02/northern-lapwing.webp"
+        ],
+        "photoCount": 2,
+        "visitCount": 1,
+        "latestVisit": "2026-09-02",
+        "years": [
+          "2026"
+        ],
+        "searchText": "Black-tailed Godwit 黑尾塍鹬 Limosa limosa Northern Lapwing 凤头麦鸡 Vanellus vanellus"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -1.552,
           53.807
         ]
