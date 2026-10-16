@@ -13,7 +13,7 @@
   "habitats": [
     "Campus"
   ],
-  "summary": "Mallard photographed on the University of Leeds campus.",
+  "summary": "Mallard and grey heron photographed on the University of Leeds campus.",
   "demo": false,
   "visits": [
     {
@@ -38,6 +38,36 @@
               "height": 1280,
               "alt": "A mallard preening while floating on water at the University of Leeds.",
               "caption": "Mallard at the University of Leeds · 9 August 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "visit-2026-08-10",
+      "date": "2026-08-10",
+      "notes": "Photographed a grey heron at the University of Leeds on 10 August 2026.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "ardea-cinerea",
+          "nameEn": "Grey Heron",
+          "nameZh": "苍鹭",
+          "scientificName": "Ardea cinerea",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/university-of-leeds/2026-08-10/grey-heron.webp",
+              "thumb": "photos/university-of-leeds/2026-08-10/thumbs/grey-heron.webp",
+              "width": 1279,
+              "height": 1706,
+              "alt": "A grey heron standing on the roof of a small wooden shelter beside a pond at the University of Leeds.",
+              "caption": "Grey heron at the University of Leeds · 10 August 2026.",
               "camera": "",
               "lens": "",
               "settings": ""
