@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "fairburn-ings",
+  "name": "RSPB Fairburn Ings",
+  "mapLabel": "Fairburn Ings",
+  "region": "West Yorkshire",
+  "country": "GB",
+  "coordinates": {
+    "lat": 53.7444,
+    "lng": -1.3173
+  },
+  "locationPrecision": "approximate",
+  "habitats": [
+    "Wetland"
+  ],
+  "summary": "Black swan, mute swan and tufted ducks photographed at RSPB Fairburn Ings.",
+  "demo": false,
+  "visits": [
+    {
+      "id": "visit-2026-10-17",
+      "date": "2026-10-17",
+      "notes": "Photographed a black swan, a mute swan and tufted ducks at RSPB Fairburn Ings on 17 October 2026.",
+      "checklistUrl": "",
+      "observations": [
+        {
+          "speciesId": "cygnus-atratus",
+          "nameEn": "Black Swan",
+          "nameZh": "黑天鹅",
+          "scientificName": "Cygnus atratus",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/fairburn-ings/2026-10-17/black-swan.webp",
+              "thumb": "photos/fairburn-ings/2026-10-17/thumbs/black-swan.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "A black swan with a red bill swimming on rippled blue water at RSPB Fairburn Ings.",
+              "caption": "Black swan at RSPB Fairburn Ings · 17 October 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        },
+        {
+          "speciesId": "cygnus-olor",
+          "nameEn": "Mute Swan",
+          "nameZh": "疣鼻天鹅",
+          "scientificName": "Cygnus olor",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/fairburn-ings/2026-10-17/mute-swan.webp",
+              "thumb": "photos/fairburn-ings/2026-10-17/thumbs/mute-swan.webp",
+              "width": 1920,
+              "height": 1280,
+              "alt": "A mute swan swimming beside reeds at RSPB Fairburn Ings.",
+              "caption": "Mute swan at RSPB Fairburn Ings · 17 October 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        },
+        {
+          "speciesId": "aythya-fuligula",
+          "nameEn": "Tufted Duck",
+          "nameZh": "凤头潜鸭",
+          "scientificName": "Aythya fuligula",
+          "identified": true,
+          "count": null,
+          "notes": "",
+          "photos": [
+            {
+              "src": "photos/fairburn-ings/2026-10-17/tufted-duck.webp",
+              "thumb": "photos/fairburn-ings/2026-10-17/thumbs/tufted-duck.webp",
+              "width": 1144,
+              "height": 581,
+              "alt": "Two tufted ducks swimming on blue water at RSPB Fairburn Ings.",
+              "caption": "Tufted ducks at RSPB Fairburn Ings · 17 October 2026.",
+              "camera": "",
+              "lens": "",
+              "settings": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

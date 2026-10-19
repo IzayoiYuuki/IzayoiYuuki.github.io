@@ -49,6 +49,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -1.3173,
+          53.7444
+        ]
+      },
+      "properties": {
+        "id": "fairburn-ings",
+        "name": "RSPB Fairburn Ings",
+        "mapLabel": "Fairburn Ings",
+        "region": "West Yorkshire",
+        "country": "GB",
+        "summary": "Black swan, mute swan and tufted ducks photographed at RSPB Fairburn Ings.",
+        "locationPrecision": "approximate",
+        "habitats": [
+          "Wetland"
+        ],
+        "demo": false,
+        "cover": "photos/fairburn-ings/2026-10-17/thumbs/black-swan.webp",
+        "speciesIds": [
+          "aythya-fuligula",
+          "cygnus-atratus",
+          "cygnus-olor"
+        ],
+        "speciesCount": 3,
+        "photoPaths": [
+          "photos/fairburn-ings/2026-10-17/black-swan.webp",
+          "photos/fairburn-ings/2026-10-17/mute-swan.webp",
+          "photos/fairburn-ings/2026-10-17/tufted-duck.webp"
+        ],
+        "photoCount": 3,
+        "visitCount": 1,
+        "latestVisit": "2026-10-17",
+        "years": [
+          "2026"
+        ],
+        "searchText": "Black Swan 黑天鹅 Cygnus atratus Mute Swan 疣鼻天鹅 Cygnus olor Tufted Duck 凤头潜鸭 Aythya fuligula"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           0.2277,
           51.4871
         ]
