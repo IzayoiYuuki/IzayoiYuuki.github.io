@@ -7,6 +7,47 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          1.65,
+          52.759
+        ]
+      },
+      "properties": {
+        "id": "horsey-gap",
+        "name": "Horsey Gap",
+        "mapLabel": "Horsey Gap",
+        "region": "Norfolk",
+        "country": "GB",
+        "summary": "Grey seal and ruddy turnstones photographed at Horsey Gap.",
+        "locationPrecision": "approximate",
+        "habitats": [
+          "Coast",
+          "Beach"
+        ],
+        "demo": false,
+        "cover": "photos/horsey-gap/2026-10-31/thumbs/grey-seal-1.webp",
+        "speciesIds": [
+          "arenaria-interpres"
+        ],
+        "speciesCount": 1,
+        "photoPaths": [
+          "photos/horsey-gap/2026-10-31/grey-seal-1.webp",
+          "photos/horsey-gap/2026-10-31/grey-seal-2.webp",
+          "photos/horsey-gap/2026-10-31/ruddy-turnstone.webp"
+        ],
+        "photoCount": 3,
+        "visitCount": 1,
+        "latestVisit": "2026-10-31",
+        "years": [
+          "2026"
+        ],
+        "searchText": "Grey Seal 灰海豹 Halichoerus grypus Ruddy Turnstone 翻石鹬 Arenaria interpres"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -1.651,
           53.822
         ]

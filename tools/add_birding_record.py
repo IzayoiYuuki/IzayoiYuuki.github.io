@@ -285,7 +285,7 @@ def main() -> int:
         place = choose_place(places, root)
         date = ask_date()
         existing = next((v for v in place['visits'] if v['date'] == date), None)
-        if existing and yes('这一天已有访问记录，新鸟种/照片加到同一次访问？', True): visit = existing
+        if existing and yes('这一天已有访问记录，新物种/照片加到同一次访问？', True): visit = existing
         else:
             visit = {'id': f'visit-{date}-{uuid.uuid4().hex[:6]}', 'date': date, 'notes': '', 'checklistUrl': '', 'observations': []}
             place['visits'].append(visit)
@@ -294,22 +294,29 @@ def main() -> int:
         with tempfile.TemporaryDirectory(prefix='birding-import-') as temporary:
             stage = Path(temporary)
             while True:
-                print('\n添加一个鸟种：')
+                print('\n添加一个物种：')
                 en = ask('英文名（不确定可保持默认）', 'Unidentified bird')
                 zh = ask('中文名（可留空）')
                 scientific = ask('学名（可留空）')
-                identified = yes('鸟种已经确认？确认后才计入鸟种数', bool(scientific))
-                matching = next((o for o in known if (scientific and o['scientificName'].casefold() == scientific.casefold()) or
+                matching = next((o for o in visit['observations'] + known if (scientific and o['scientificName'].casefold() == scientific.casefold()) or
                                  (en != 'Unidentified bird' and o['nameEn'].casefold() == en.casefold()) or (zh and o['nameZh'] == zh)), None)
+                # A repeated species keeps its classification, including non-bird wildlife.
+                if matching:
+                    is_bird = matching.get('isBird', True)
+                    print('沿用已有分类：' + ('鸟类' if is_bird else '其他动物（不计入鸟种数）'))
+                else:
+                    is_bird = yes('这是鸟类吗？其他动物选 n，不计入鸟种数', True)
+                if not is_bird and en == 'Unidentified bird': en = 'Unidentified wildlife'
+                identified = yes('物种已经确认？已确认的鸟类才计入鸟种数', bool(scientific))
                 species_id = matching['speciesId'] if matching else (slugify(scientific or en or zh) or 'bird-' + uuid.uuid4().hex[:8])
-                if not identified and en == 'Unidentified bird': species_id = 'unidentified'
+                if not identified and en in {'Unidentified bird', 'Unidentified wildlife'}: species_id = 'unidentified'
                 while True:
                     count_text = ask('数量（不知道就留空）')
                     if not count_text: count = None; break
                     if count_text.isdigit(): count = int(count_text); break
                     print('请输入非负整数，或留空。')
                 obs = {'speciesId': species_id, 'nameEn': en, 'nameZh': zh, 'scientificName': scientific,
-                       'identified': identified, 'count': count, 'notes': ask('鸟种备注（可留空）'), 'photos': []}
+                       'identified': identified, 'isBird': is_bird, 'count': count, 'notes': ask('物种备注（可留空）'), 'photos': []}
                 sources = input_photos()
                 caption = ask('这一组照片的说明（可留空）') if sources else ''
                 for source in sources:
@@ -319,14 +326,14 @@ def main() -> int:
                     obs['photos'].append(process_photo(source, stage, relative,
                         alt=f'{en or zh}, photographed at {place["name"]}.', caption=caption))
                 previous = next((o for o in visit['observations'] if o['speciesId'] == species_id), None)
-                if previous and yes('同次访问已有该鸟种，合并新照片？', True):
+                if previous and yes('同次访问已有该物种，合并新照片？', True):
                     previous['photos'].extend(obs['photos'])
                     if obs['notes']: previous['notes'] = '\n'.join(x for x in [previous.get('notes', ''), obs['notes']] if x)
                     if count is not None: previous['count'] = count
                 else: visit['observations'].append(obs)
-                if not yes('继续添加另一个鸟种？'): break
+                if not yes('继续添加另一个物种？'): break
             place['visits'].sort(key=lambda v: v['date'] or '', reverse=True)
-            print(f'\n准备更新：{place["name"]} · {date} · 本次 {len(visit["observations"])} 条鸟类记录。')
+            print(f'\n准备更新：{place["name"]} · {date} · 本次 {len(visit["observations"])} 条观察记录。')
             if not yes('确认保存公开记录及网页照片？'): raise Cancelled()
             commit_record(place, places, stage, root)
         print('\n已保存并重建地图索引、照片目录。原片保持不变。')

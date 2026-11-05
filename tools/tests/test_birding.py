@@ -83,6 +83,64 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(build_index([record])['features'][0]['properties']['speciesCount'], 1)
 
 
+class WildlifeTests(unittest.TestCase):
+    def mixed_record(self):
+        record = example()
+        bird = record['visits'][0]['observations'][0]
+        seal = copy.deepcopy(bird)
+        seal.update(speciesId='halichoerus-grypus', nameEn='Grey Seal', nameZh='灰海豹',
+                    scientificName='Halichoerus grypus', isBird=False)
+        for observation, names in [(bird, ['mallard']), (seal, ['seal-one', 'seal-two'])]:
+            observation['photos'] = [
+                {'src': f'photos/test/{name}.webp', 'thumb': f'photos/test/thumbs/{name}.webp',
+                 'width': 100, 'height': 80, 'alt': observation['nameEn'], 'caption': name}
+                for name in names
+            ]
+        record['visits'][0]['observations'].append(seal)
+        return record
+
+    def test_identified_wildlife_keeps_photos_without_adding_bird_species(self):
+        record = self.mixed_record()
+        validate_places([record], check_files=False)
+        props = build_index([record])['features'][0]['properties']
+        self.assertEqual(props['speciesIds'], ['mallard'])
+        self.assertEqual(props['speciesCount'], 1)
+        self.assertEqual(props['photoCount'], 3)
+        self.assertEqual(len(props['photoPaths']), 3)
+        catalogue = build_catalogue([record])
+        self.assertEqual(catalogue.count('<figure>'), 3)
+        self.assertIn('Grey Seal', catalogue)
+        self.assertIn('Other wildlife', catalogue)
+        self.assertNotIn('Identification unconfirmed', catalogue)
+
+    def test_wildlife_only_record_has_no_bird_species(self):
+        record = self.mixed_record()
+        record['visits'][0]['observations'].pop(0)
+        props = build_index([record])['features'][0]['properties']
+        self.assertEqual(props['speciesIds'], [])
+        self.assertEqual(props['speciesCount'], 0)
+        self.assertEqual(props['photoCount'], 2)
+
+    def test_legacy_and_explicit_birds_count_once_and_unknowns_are_excluded(self):
+        record = example()
+        bird = record['visits'][0]['observations'][0]
+        repeated = copy.deepcopy(bird); repeated['isBird'] = True
+        unknown = copy.deepcopy(bird); unknown.update(speciesId='unidentified', identified=False)
+        record['visits'][0]['observations'].extend([repeated, unknown])
+        validate_places([record], check_files=False)
+        props = build_index([record])['features'][0]['properties']
+        self.assertEqual(props['speciesIds'], ['mallard'])
+        self.assertEqual(props['speciesCount'], 1)
+        self.assertIn('Identification unconfirmed', build_catalogue([record]))
+
+    def test_is_bird_requires_boolean_if_provided(self):
+        for value in [None, 0, 1, 'false', [], {}]:
+            with self.subTest(value=value):
+                record = example(); record['visits'][0]['observations'][0]['isBird'] = value
+                with self.assertRaisesRegex(ValidationError, 'isBird'):
+                    validate_places([record], check_files=False)
+
+
 class ImportTests(unittest.TestCase):
     def test_pixels_only_export_and_orientation(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -131,7 +189,7 @@ class ImportTests(unittest.TestCase):
             root = Path(tmp); (root/'index.html').write_text('<html></html>')
             source = root/'test photo.jpg'; Image.new('RGB', (240, 160), 'green').save(source)
             answers = ['0', 'Integration Test Pond', '', 'Test region', '', 'h', 'Wetland', 'Testing only.',
-                       '2026-09-07', 'First visit', 'Mallard', '绿头鸭', 'Anas platyrhynchos', 'y', '2', 'Test note',
+                       '2026-09-07', 'First visit', 'Mallard', '绿头鸭', 'Anas platyrhynchos', 'y', 'y', '2', 'Test note',
                        str(source), '', 'First caption', 'n', 'y']
             script = TOOLS/'add_birding_record.py'
             run = subprocess.run([sys.executable, str(script), '--root', str(root)], input='\n'.join(answers)+'\n', text=True, capture_output=True)
@@ -140,7 +198,7 @@ class ImportTests(unittest.TestCase):
             self.assertIsNone(first['coordinates']); self.assertEqual(len(first['visits']), 1)
             self.assertEqual(first['visits'][0]['observations'][0]['count'], 2)
             self.assertNotIn(str(source), json.dumps(first))
-            answers = ['1', '2026-09-06', 'Earlier visit', 'Robin', '知更鸟', 'Erithacus rubecula', 'y', '1', '', '', 'n', 'y']
+            answers = ['1', '2026-09-06', 'Earlier visit', 'Robin', '知更鸟', 'Erithacus rubecula', 'y', 'y', '1', '', '', 'n', 'y']
             run = subprocess.run([sys.executable, str(script), '--root', str(root)], input='\n'.join(answers)+'\n', text=True, capture_output=True)
             self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
             places = load_places(root); self.assertEqual(len(places), 1); self.assertEqual(len(places[0]['visits']), 2)
@@ -148,6 +206,35 @@ class ImportTests(unittest.TestCase):
             props = build_index(places)['features'][0]['properties']
             self.assertEqual(props['speciesCount'], 2); self.assertEqual(props['visitCount'], 2)
             self.assertIn('Integration Test Pond', (root/'birding/catalogue.html').read_text())
+
+    def test_interactive_wildlife_import_and_photo_merge_preserve_category(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root/'index.html').write_text('<html></html>')
+            source = root/'seal.jpg'; Image.new('RGB', (240, 160), 'grey').save(source)
+            script = TOOLS/'add_birding_record.py'
+            answers = ['0', 'Test beach', '', 'Test region', '', 'h', 'Coast', '',
+                       '2026-10-31', '', 'Grey Seal', '灰海豹', 'Halichoerus grypus', 'n', 'y', '', '',
+                       str(source), '', 'Seal photo one', 'n', 'y']
+            run = subprocess.run([sys.executable, str(script), '--root', str(root)],
+                                 input='\n'.join(answers)+'\n', text=True, capture_output=True)
+            self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+            # A known seal needs no category prompt and retains its category when merged.
+            answers = ['1', '2026-10-31', 'y', '', 'Grey Seal', '灰海豹', 'Halichoerus grypus',
+                       'y', '', '', str(source), '', 'Seal photo two', 'y', 'n', 'y']
+            run = subprocess.run([sys.executable, str(script), '--root', str(root)],
+                                 input='\n'.join(answers)+'\n', text=True, capture_output=True)
+            self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+            records = load_places(root)
+            observations = records[0]['visits'][0]['observations']
+            self.assertEqual(len(observations), 1)
+            self.assertIs(observations[0]['isBird'], False)
+            self.assertIs(observations[0]['identified'], True)
+            self.assertEqual(len(observations[0]['photos']), 2)
+            props = build_index(records)['features'][0]['properties']
+            self.assertEqual(props['speciesCount'], 0)
+            self.assertEqual(props['photoCount'], 2)
+            validate_places(records, root)
+            self.assertEqual(audit_images(records, root), 4)
 
 
 if __name__ == '__main__': unittest.main()

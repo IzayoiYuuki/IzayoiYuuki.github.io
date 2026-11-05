@@ -122,9 +122,10 @@
       if (visit.notes) article.append(make('p', '', visit.notes));
       for (const observation of visit.observations || []) {
         const row = make('div', 'observation');
-        row.append(make('strong', '', observation.nameEn || observation.nameZh || 'Unidentified bird'));
+        row.append(make('strong', '', observation.nameEn || observation.nameZh || 'Unidentified wildlife'));
         if (observation.nameZh && observation.nameEn) row.append(document.createTextNode(` · ${observation.nameZh}`));
         if (observation.scientificName) row.append(make('em', 'species-extra', ` ${observation.scientificName}`));
+        if (observation.isBird === false) row.append(make('span', 'species-extra', ' · Other wildlife'));
         if (observation.count !== null && observation.count !== undefined) row.append(document.createTextNode(` · Count: ${observation.count}`));
         if (observation.notes) row.append(make('p', '', observation.notes));
         article.append(row);
@@ -146,8 +147,8 @@
   }
   function photoCard(photo, index, place) {
     const card = make('figure', 'photo-card'), button = make('button', 'photo-open'); button.type = 'button';
-    button.setAttribute('aria-label', `Open photograph: ${photo.caption || photo.observation.nameEn || 'Bird photograph'}`);
-    const image = make('img'); image.src = publicImage(photo.thumb || photo.src); image.alt = photo.alt || photo.caption || 'Bird photograph';
+    button.setAttribute('aria-label', `Open photograph: ${photo.caption || photo.observation.nameEn || 'Wildlife photograph'}`);
+    const image = make('img'); image.src = publicImage(photo.thumb || photo.src); image.alt = photo.alt || photo.caption || 'Wildlife photograph';
     image.loading = 'lazy'; image.decoding = 'async'; image.width = photo.width; image.height = photo.height;
     image.addEventListener('error', () => {
       image.remove(); button.prepend(make('p', 'photo-notes', 'This image is unavailable. Check the photo filename.')); button.disabled = true;
@@ -157,12 +158,14 @@
     const caption = make('figcaption');
     if (place.demo) caption.append(make('p', 'photo-origin', 'Sample image · not assigned to this location'));
     const title = make('div', 'photo-caption-title');
-    title.append(make('h3', '', photo.observation.nameEn || photo.observation.nameZh || 'Unidentified bird'));
+    title.append(make('h3', '', photo.observation.nameEn || photo.observation.nameZh || 'Unidentified wildlife'));
     if (photo.visit.date) title.append(make('span', '', dateLabel(photo.visit.date)));
     caption.append(title);
     if (photo.observation.nameZh) caption.append(make('p', 'species-extra', photo.observation.nameZh));
     if (photo.observation.scientificName) caption.append(make('em', 'species-extra', photo.observation.scientificName));
-    if (!photo.observation.identified) caption.append(make('p', 'species-extra', 'Identification unconfirmed · not counted in the species total'));
+    if (photo.observation.isBird === false) caption.append(make('p', 'species-extra', 'Other wildlife'));
+    if (!photo.observation.identified) caption.append(make('p', 'species-extra', photo.observation.isBird === false
+      ? 'Identification unconfirmed' : 'Identification unconfirmed · not counted in the species total'));
     if (photo.caption) caption.append(make('p', 'photo-notes', photo.caption));
     card.append(caption); return card;
   }
@@ -177,8 +180,8 @@
   }
   function updateLightbox() {
     const photo = state.photos[state.photoIndex]; if (!photo) return;
-    $('lightbox-title').textContent = photo.observation.nameEn || photo.observation.nameZh || 'Bird photograph';
-    $('lightbox-image').src = publicImage(photo.src); $('lightbox-image').alt = photo.alt || photo.caption || 'Bird photograph';
+    $('lightbox-title').textContent = photo.observation.nameEn || photo.observation.nameZh || 'Wildlife photograph';
+    $('lightbox-image').src = publicImage(photo.src); $('lightbox-image').alt = photo.alt || photo.caption || 'Wildlife photograph';
     const metadata = [photo.camera, photo.lens, photo.settings].filter(Boolean).join(' · ');
     const place = state.all.find(f => f.properties.id === state.selected)?.properties;
     $('lightbox-caption').textContent = [photo.caption, metadata, place?.demo ? 'Demonstration only: the photograph is not assigned to this location.' : (photo.visit.date ? dateLabel(photo.visit.date) : '')].filter(Boolean).join('\n');

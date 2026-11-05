@@ -2,6 +2,7 @@
 
 Authoring source of truth: birding/data/places/*.json.
 Everything inside that directory is PUBLIC. Never put private GPS data there.
+Observations default to isBird: true; set false for other wildlife photographs.
 """
 from __future__ import annotations
 
@@ -20,7 +21,7 @@ ID_RE = re.compile(r'^[a-z0-9][a-z0-9-]*$')
 PLACE_FIELDS = {'schemaVersion', 'id', 'name', 'mapLabel', 'region', 'country', 'coordinates',
                 'locationPrecision', 'habitats', 'summary', 'demo', 'visits'}
 VISIT_FIELDS = {'id', 'date', 'notes', 'checklistUrl', 'observations'}
-OBS_FIELDS = {'speciesId', 'nameEn', 'nameZh', 'scientificName', 'identified', 'count', 'notes', 'photos'}
+OBS_FIELDS = {'speciesId', 'nameEn', 'nameZh', 'scientificName', 'identified', 'isBird', 'count', 'notes', 'photos'}
 PHOTO_FIELDS = {'src', 'thumb', 'width', 'height', 'alt', 'caption', 'camera', 'lens', 'settings'}
 
 
@@ -154,8 +155,9 @@ def validate_places(places: list[dict], root: Path = ROOT, check_files: bool = T
                 text(obs, ['speciesId', 'nameEn', 'nameZh', 'scientificName', 'notes'], vw, {'speciesId'})
                 sid = obs.get('speciesId')
                 require(isinstance(sid, str) and bool(ID_RE.fullmatch(sid)), f'{vw}: speciesId must be a slug.')
-                require(bool(obs.get('nameEn') or obs.get('nameZh')), f'{vw}: provide an English or Chinese bird name.')
+                require(bool(obs.get('nameEn') or obs.get('nameZh')), f'{vw}: provide an English or Chinese species name.')
                 require(isinstance(obs.get('identified'), bool), f'{vw}.identified: true or false is required.')
+                require(isinstance(obs.get('isBird', True), bool), f'{vw}.isBird: must be true or false when provided.')
                 require(not obs.get('identified') or (isinstance(sid, str) and sid not in {'unknown', 'unidentified'}), f'{vw}: an unidentified observation cannot be marked identified.')
                 count = obs.get('count')
                 require(count is None or isinstance(count, int) and not isinstance(count, bool) and count >= 0, f'{vw}.count: use a non-negative integer or null.')
@@ -190,7 +192,8 @@ def build_index(places: list[dict]) -> dict:
         photos = all_photos(place)
         observations = [o for v in place['visits'] for o in v['observations']]
         dates = [v['date'] for v in place['visits'] if v.get('date')]
-        identified = sorted({o['speciesId'] for o in observations if o['identified']})
+        # Legacy observations are birds; other wildlife stays in the photo album.
+        identified = sorted({o['speciesId'] for o in observations if o['identified'] and o.get('isBird', True)})
         coords = place['coordinates']
         properties = {key: place.get(key, '') for key in ['id', 'name', 'mapLabel', 'region', 'country', 'summary', 'locationPrecision', 'habitats', 'demo']}
         properties.update({
@@ -227,7 +230,10 @@ def build_catalogue(places: list[dict]) -> str:
             for obs in visit['observations']:
                 output.append(f'<h4>{esc(obs["nameEn"])} {esc(obs.get("nameZh", ""))}</h4>')
                 if obs.get('scientificName'): output.append(f'<p><em>{esc(obs["scientificName"])}</em></p>')
-                if not obs['identified']: output.append('<p>Identification unconfirmed; excluded from the species count.</p>')
+                if not obs.get('isBird', True): output.append('<p>Other wildlife</p>')
+                if not obs['identified']:
+                    output.append('<p>Identification unconfirmed; excluded from the species count.</p>'
+                                  if obs.get('isBird', True) else '<p>Identification unconfirmed</p>')
                 if obs.get('count') is not None: output.append(f'<p>Count: {obs["count"]}</p>')
                 if obs.get('notes'): output.append(f'<p>{esc(obs["notes"])}</p>')
                 for photo in obs['photos']:
