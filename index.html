@@ -67,18 +67,19 @@
             div.twopictures {width:48%;display:inline-block;}
           }
 
-          /* Bird photography and its map link share the map's blue palette. */
+          /* Hobby journals share the birding map's blue palette. */
           .birding-nav {display:inline-block; width:30px; height:30px; overflow:hidden;}
           .birding-nav img {display:block; width:30px; height:30px; object-fit:contain; transform:scale(1.6);}
-          #bird-photography {border-color:#a9c3d9; background:rgba(238,246,251,.92); color:#233f59;}
+          #bird-photography,#games-of-the-year {border-color:#a9c3d9; background:rgba(238,246,251,.92); color:#233f59;}
           .bird-photo-gallery {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;}
           .bird-photo-gallery figure {margin:0;}
           .bird-photo-gallery img {display:block; width:100%; height:auto; border-radius:7px;}
           .bird-photo-gallery figcaption {margin-top:8px; font:12px/1.5 Arial,sans-serif; color:#536d85;}
-          #bird-photography .mainparagraph {margin-left:0; line-height:1.6;}
-          .birding-entry {display:inline-block; padding:12px 16px; border:1px solid #28649a; border-radius:7px; background:#28649a; text-decoration:none; color:#fff; font:14px/1.4 Arial,sans-serif;}
-          .birding-entry:hover {background:#194d79; border-color:#194d79;}
-          .birding-entry:focus-visible,.birding-nav:focus-visible {outline:3px solid #317aae; outline-offset:4px;}
+          #bird-photography .mainparagraph,#games-of-the-year .mainparagraph {margin-left:0; line-height:1.6;}
+          .birding-entry,.games-entry {display:inline-block; padding:12px 16px; border:1px solid #28649a; border-radius:7px; background:#28649a; text-decoration:none; color:#fff; font:14px/1.4 Arial,sans-serif;}
+          .birding-entry:hover,.games-entry:hover {background:#194d79; border-color:#194d79;}
+          .birding-entry:focus-visible,.games-entry:focus-visible,.birding-nav:focus-visible {outline:3px solid #317aae; outline-offset:4px;}
+          .games-subtitle {font:20px/1.5 "Songti SC","STSong",serif; letter-spacing:.12em; color:#28649a;}
           @media(max-width:768px){.bird-photo-gallery{grid-template-columns:1fr;gap:20px}}
         </style>
     </head>
@@ -221,6 +222,14 @@
                         I am also playing football as a winger.
                         You can find me for playing football.
                     </p>
+                </div>
+                <div id="games-of-the-year" class="block">
+                    <h3 class="subsubtitle">Games of the year</h3>
+                    <p class="games-subtitle" lang="zh-Hans">我的年度游戏</p>
+                    <p class="mainparagraph">
+                        A personal journal of my favourite games (in Chinese).
+                    </p>
+                    <a class="games-entry" href="games/index.html">Explore my games of the year</a>
                 </div>
             </div>
             <div id="language" style="clear:both;">

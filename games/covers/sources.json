@@ -1,0 +1,76 @@
+{
+  "retrievedOn": "2026-11-23",
+  "note": "Original cover images downloaded without alterations. Artwork belongs to its respective rights holders. Years are personal annual selections, not necessarily release years.",
+  "covers": [
+    {
+      "year": 2026,
+      "file": "2026-fire-emblem-key-art-ja.webp",
+      "title": "ファイアーエムブレム 万紫千紅",
+      "edition": "Japanese official game key artwork, without physical packaging",
+      "sourcePage": "https://www.nintendo.com/jp/games/switch2/aacsa/index.html",
+      "imageUrl": "https://www.nintendo.com/jp/games/switch2/aacsa/assets/data/webp/top/product/package.webp",
+      "width": 620,
+      "height": 620
+    },
+    {
+      "year": 2025,
+      "file": "2025-hollow-knight-silksong-en.jpg",
+      "title": "Hollow Knight: Silksong",
+      "edition": "English Steam library cover",
+      "sourcePage": "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/",
+      "imageUrl": "https://cdn.akamai.steamstatic.com/steam/apps/1030300/library_600x900_2x.jpg",
+      "width": 600,
+      "height": 900
+    },
+    {
+      "year": 2024,
+      "file": "2024-unicorn-overlord-key-art-ja.jpg",
+      "title": "ユニコーンオーバーロード",
+      "edition": "Japanese Nintendo digital-store key artwork, using the original English brand logo",
+      "sourcePage": "https://store-jp.nintendo.com/list/software/70010000058315.html",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/1f0dc6477068ec077e6700877179b280797647e0b1929e6f8cb7914d50fff8d7.jpg",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "year": 2023,
+      "file": "2023-baldurs-gate-3-en.jpg",
+      "title": "Baldur's Gate 3",
+      "edition": "English Steam library cover",
+      "sourcePage": "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/",
+      "imageUrl": "https://cdn.akamai.steamstatic.com/steam/apps/1086940/library_600x900_2x.jpg",
+      "width": 600,
+      "height": 900
+    },
+    {
+      "year": 2022,
+      "file": "2022-elden-ring-ja.jpg",
+      "title": "ELDEN RING",
+      "edition": "Japanese PlayStation official artwork; the original Japanese-market logo is in English",
+      "sourcePage": "https://blog.ja.playstation.com/?p=199484",
+      "imageUrl": "https://blog.ja.playstation.com/tachyon/sites/7/2022/02/308ad08e7361e6021620771282fa44c827341327.jpg",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "year": 2021,
+      "file": "2021-final-fantasy-xiv-endwalker-ja.jpg",
+      "title": "ファイナルファンタジーXIV: 暁月のフィナーレ",
+      "edition": "Japanese Endwalker official key artwork, without physical packaging",
+      "sourcePage": "https://jp.finalfantasyxiv.com/endwalker/media/",
+      "imageUrl": "https://lds-img.finalfantasyxiv.com/promo/h/3/vrOiGoGuMan6PYLjGC20x2c-NE.jpg",
+      "width": 2000,
+      "height": 2734
+    },
+    {
+      "year": 2020,
+      "file": "2020-13-sentinels-key-art-ja.png",
+      "title": "十三機兵防衛圏",
+      "edition": "Japanese official game key artwork, without physical packaging",
+      "sourcePage": "https://blog.ja.playstation.com/2020/11/20/20201120-13sar/",
+      "imageUrl": "https://blog.ja.playstation.com/tachyon/sites/7/2020/11/45654d801c0fef6ecb5256c93514333026681fd7.png",
+      "width": 600,
+      "height": 850
+    }
+  ]
+}
